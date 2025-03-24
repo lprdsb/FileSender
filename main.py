@@ -6,7 +6,7 @@ from pkg.plugin.events import PersonNormalMessageReceived
 class FileSenderPlugin(BasePlugin):
 
     def __init__(self, host: APIHost):
-        self.files_folder = "path/to/your/files/folder"  # 在此处填写你在本机存储想要发送文件的文件夹路径
+        self.files_folder = "D:\Documents\Workspace\JmPlugin\data"  # 在此处填写你在本机存储想要发送文件的文件夹路径
 
     async def initialize(self):
         pass
