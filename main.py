@@ -1,6 +1,7 @@
 import os
 from pkg.plugin.context import register, handler, BasePlugin, APIHost, EventContext
 from pkg.plugin.events import PersonNormalMessageReceived
+import pkg.platform.types as platform_types
 
 @register(name="FileSender", description="A plugin for sending files to requesters", version="1.0", author="Assistant")
 class FileSenderPlugin(BasePlugin):
@@ -32,7 +33,9 @@ class FileSenderPlugin(BasePlugin):
             if file_path and os.path.exists(file_path):
                 try:
                     # 发送文件
-                    await ctx.send_file(sender_id, file_path)
+                    # await ctx.send_file(sender_id, file_path)
+                    file = platform_types.File(url = file_path)
+                    ctx.add_return('reply', file)
                     ctx.add_return("reply", ["文件已发送"])
                 except Exception as e:
                     ctx.add_return("reply", ["发送文件时出错：" + str(e)])
