@@ -34,7 +34,7 @@ class FileSenderPlugin(BasePlugin):
                 try:
                     # 发送文件
                     # await ctx.send_file(sender_id, file_path)
-                    file = platform_types.File(path = file_path, file_id = file_name, name = file_name, size = 114)
+                    file = platform_types.Image(path = file_path)
                     ctx.add_return('reply', file)
                     ctx.add_return("reply", ["文件已发送"])
                 except Exception as e:
